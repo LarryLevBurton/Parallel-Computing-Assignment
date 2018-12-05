@@ -94,7 +94,7 @@ int BruteForce(unsigned char *key, int *lock
                                 return 1;
  
                             } 
-                            printf("2 flag : d\n",flag);
+                            printf("2 flag : %d\n",flag);
                             for(int x = 0; x < size; x++){
                                 printf("X: %d\n",x);
                                 if(x != rank){
