@@ -87,7 +87,6 @@ int BruteForce(unsigned char *key, int *lock
                             if(strncmp(key,TempDecKey,getLength(TempDecKey)) == 0 ){
                                 flag = 1;
                                 printf("flag : %d\n",flag);
-
                                 MPI_Bcast(&flag, 1, MPI_INT, rank, MPI_COMM_WORLD);
                                 printf("\nKey Cracked: %s : %s\n\n", key, TempDecKey);
                                 decFunction(ciphertext, ciphertext_len,TempDecKey);
