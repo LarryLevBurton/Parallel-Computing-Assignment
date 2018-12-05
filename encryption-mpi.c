@@ -66,6 +66,7 @@ int BruteForce(unsigned char *key, int *lock
                 ,unsigned char ciphertext[128],int ciphertext_len,int rank, int size){
 
     int flag = 0;
+    int otherflag = 0;
     printf("Rank :%d size: %d \n",size,rank);
 
     unsigned char TempDecKey[17] = "#####000000#####";
@@ -89,7 +90,7 @@ int BruteForce(unsigned char *key, int *lock
                         TempDecKey[9] = alpha[pos4]; 
                         for (int pos5 = 0; pos5 < alphaLength; pos5++) {
                             TempDecKey[10] = alpha[pos5];
-                            MPI_Bcast(&flag, 1, MPI_INT, otherRank, MPI_COMM_WORLD);
+                            MPI_Bcast(&otherflag, 1, MPI_INT, otherRank, MPI_COMM_WORLD);
 
                             if(strncmp(key,TempDecKey,getLength(TempDecKey)) == 0 ){
                                 flag = 1;
