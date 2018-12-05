@@ -44,7 +44,6 @@ int main(int argc, char *argv[]){
         printf("Ciphertext is:\n");
         BIO_dump_fp (stdout, (const char *)ciphertext, ciphertext_len);
     }
-    MPI_Barrier(MPI_COMM_WORLD);
 
 
     // unsigned char ciphertext2[128];
@@ -82,6 +81,7 @@ int BruteForce(unsigned char *key, int *lock
     }else{
         source++;
     }
+    MPI_Barrier(MPI_COMM_WORLD);
 
     int alphaLength = getLength(alpha);
     for (int pos0 = size; pos0 < alphaLength; pos0 +=rank) {
