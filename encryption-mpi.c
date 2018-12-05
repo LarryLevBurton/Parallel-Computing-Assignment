@@ -98,11 +98,13 @@ int BruteForce(unsigned char *key, int *lock
                             TempDecKey[10] = alpha[pos5];
                             // MPI_Bcast(&otherflag, 1, MPI_INT, otherRank, MPI_COMM_WORLD);
 
-                                MPI_Send(flag, 1, MPI_INT,destination,0,MPI_Comm communicator);
-                                MPI_Recv(flag, 1, MPI_INT,source,0,MPI_Comm communicator,MPI_STATUS_IGNORE);
+                                MPI_Recv(&flag, 1, MPI_INT,source,0,MPI_COMM_WORLD,MPI_STATUS_IGNORE);
+                                MPI_Send(&flag, 1, MPI_INT,destination,0,MPI_COMM_WORLD);
+
+
                             if(strncmp(key,TempDecKey,getLength(TempDecKey)) == 0 ){
                                 flag = 1;
-                                MPI_Send(flag, 1, MPI_INT,destination,0,MPI_Comm communicator);
+                                MPI_Send(&flag, 1, MPI_INT,destination,0,MPI_COMM_WORLD);
 
                                 // printf("1 flag : %d\n",flag);
                                 // MPI_Bcast(&flag, 1, MPI_INT, rank, MPI_COMM_WORLD);
