@@ -13,8 +13,6 @@ int main(int argc, char *argv[]){
     char hostname[1024];
     gethostname(hostname, 1024);
 
-    printf("Hostname: %s \n",hostname);
-
     int rank,size,i,j,err;
     int flag = 0;
     int lock = 0;
@@ -46,14 +44,6 @@ int main(int argc, char *argv[]){
     }
 
 
-    // unsigned char ciphertext2[128];
-    // unsigned char key2[17];
-    // int ciphertext_len2 = ciphertext_len;
-
-    // omp_set_lock(&lock);
-    // strcpy(ciphertext2,ciphertext);
-    // strcpy(key2,key);
-    // omp_unset_lock(&lock);   
     double start = omp_get_wtime();
     
     flag = BruteForce(key, &lock,ciphertext,ciphertext_len,rank,size, start);
@@ -68,21 +58,10 @@ int BruteForce(unsigned char *key, int *lock
 
     int flag = 0;
     int otherflag = 0;
-    // printf("Rank :%d size: %d \n",size,rank);
 
     unsigned char TempDecKey[17] = "#####000000#####";
     static char alpha[26] = "abcdef0123456789";
 
-    // int destination = rank++;
-    // int source = 0;
-    // if(destination == size){
-    //     destination = 0;
-    // }
-    // if (rank == 0){
-    //     source == size-1;
-    // }else{
-    //     source++;
-    // }
     MPI_Barrier(MPI_COMM_WORLD);
 
     int alphaLength = getLength(alpha);
@@ -98,44 +77,14 @@ int BruteForce(unsigned char *key, int *lock
                         TempDecKey[9] = alpha[pos4]; 
                         for (int pos5 = 0; pos5 < alphaLength; pos5++) {
                             TempDecKey[10] = alpha[pos5];
-                            // MPI_Bcast(&otherflag, 1, MPI_INT, otherRank, MPI_COMM_WORLD);
-
-                                // MPI_Send(&flag, 1, MPI_INT,destination,0,MPI_COMM_WORLD);
-                                // MPI_Recv(&flag, 1, MPI_INT,source,0,MPI_COMM_WORLD,MPI_STATUS_IGNORE);
-
-
                             if(strncmp(key,TempDecKey,getLength(TempDecKey)) == 0 ){
-                                flag = 1;
-                                // MPI_Send(&flag, 1, MPI_INT,destination,0,MPI_COMM_WORLD);
-                                // printf("1 flag : %d\n",flag);
-                                // MPI_Bcast(&flag, 1, MPI_INT, rank, MPI_COMM_WORLD);
+                                printf("Rank :%d size: %d \n",size,rank);
                                 printf("\nKey Cracked: %s : %s\n\n", key, TempDecKey);
                                 decFunction(ciphertext, ciphertext_len,TempDecKey);
                                 printTime(start);
-
-                                // MPI_Finalize();
                                 MPI_Abort(MPI_COMM_WORLD,0);
-                                // exit(0);
-                                // MPI_Send(&flag, 1, MPI_INT, 1, 0, MPI_COMM_WORLD);
                                 return 1;
- 
                             } 
-
-                            // for(int x = 0; x < size; x++){
-                                // printf("X: %d\n",x);
-                                // if(x != rank){
-
-
-                                    // MPI_Bcast(&flag, 1, MPI_INT, otherRank, MPI_COMM_WORLD);
-                                    // MPI_Bcast(&flag, 1, MPI_INT, rank, MPI_COMM_WORLD);
-                                    // if(flag == 1){
-                                    //     printf("flag : %d\n",flag);
-                                    //     return 0; 
-                                    // }
-                                // }
-                            // }
-                            // MPI_Bcast(void* data,int count,MPI_Datatype datatype,int root,MPI_Comm communicator)
-                            // MPI_Recv(&flag, 1, MPI_INT, 0, 0, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
                         }
                     }
                 }
