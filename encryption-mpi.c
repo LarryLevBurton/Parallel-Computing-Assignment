@@ -103,7 +103,7 @@ int BruteForce(unsigned char *key, int *lock
                             } 
 
                             for(int x = 0; x < size; x++){
-                                printf("X: %d\n",x);
+                                // printf("X: %d\n",x);
                                 if(x != rank){
                                     MPI_Bcast(&flag, 1, MPI_INT, x, MPI_COMM_WORLD);
                                     if(flag == 1){
