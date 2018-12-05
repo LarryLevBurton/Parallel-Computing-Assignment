@@ -75,7 +75,7 @@ int BruteForce(unsigned char *key, int *lock
     if(otherRank == size){
         otherRank = 0;
     }
-    printf("Other Rank: %d", otherRank);
+    printf("Other Rank: %d\n", otherRank);
 
     int alphaLength = getLength(alpha);
     for (int pos0 = size; pos0 < alphaLength; pos0 +=rank) {
@@ -95,7 +95,7 @@ int BruteForce(unsigned char *key, int *lock
                             if(strncmp(key,TempDecKey,getLength(TempDecKey)) == 0 ){
                                 flag = 1;
                                 // printf("1 flag : %d\n",flag);
-                                MPI_Bcast(&flag, 1, MPI_INT, rank, MPI_COMM_WORLD);
+                                // MPI_Bcast(&flag, 1, MPI_INT, rank, MPI_COMM_WORLD);
                                 printf("\nKey Cracked: %s : %s\n\n", key, TempDecKey);
                                 decFunction(ciphertext, ciphertext_len,TempDecKey);
                                 // MPI_Send(&flag, 1, MPI_INT, 1, 0, MPI_COMM_WORLD);
@@ -107,7 +107,7 @@ int BruteForce(unsigned char *key, int *lock
                             for(int x = 0; x < size; x++){
                                 // printf("X: %d\n",x);
                                 if(x != rank){
-                                    MPI_Bcast(&flag, 1, MPI_INT, x, MPI_COMM_WORLD);
+                                    // MPI_Bcast(&flag, 1, MPI_INT, x, MPI_COMM_WORLD);
                                     if(flag == 1){
                                         return 1; 
                                     }
