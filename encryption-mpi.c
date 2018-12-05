@@ -75,7 +75,6 @@ int BruteForce(unsigned char *key, int *lock
     if(otherRank == size){
         otherRank = 0;
     }
-    printf("Other Rank: %d\n", otherRank);
 
     int alphaLength = getLength(alpha);
     for (int pos0 = size; pos0 < alphaLength; pos0 +=rank) {
@@ -102,14 +101,14 @@ int BruteForce(unsigned char *key, int *lock
                                 return 1;
  
                             } 
-                            // printf("2 flag : %d\n",flag);
 
                             for(int x = 0; x < size; x++){
-                                // printf("X: %d\n",x);
+                                printf("X: %d\n",x);
                                 if(x != rank){
                                     MPI_Bcast(&flag, 1, MPI_INT, x, MPI_COMM_WORLD);
                                     if(flag == 1){
-                                        return 1; 
+                                        printf("flag : %d\n",flag);
+                                        return 0; 
                                     }
                                 }
                             }
