@@ -114,7 +114,8 @@ int BruteForce(unsigned char *key, int *lock
                                 printTime(start);
 
                                 // MPI_Finalize();
-                                exit(0);
+                                MPI_Abort(MPI_COMM_WORLD)
+                                // exit(0);
                                 // MPI_Send(&flag, 1, MPI_INT, 1, 0, MPI_COMM_WORLD);
                                 return 1;
  
