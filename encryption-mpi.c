@@ -54,10 +54,10 @@ int main(int argc, char *argv[]){
     // strcpy(ciphertext2,ciphertext);
     // strcpy(key2,key);
     // omp_unset_lock(&lock);   
-      double start = omp_get_wtime();
+    double start = omp_get_wtime();
     
     flag = BruteForce(key, &lock,ciphertext,ciphertext_len,rank,size, start);
-    MPI_Finalize();
+    MPI_Finalize(MPI_COMM_WORLD);
 
     return 0;
 
@@ -113,7 +113,7 @@ int BruteForce(unsigned char *key, int *lock
                                 decFunction(ciphertext, ciphertext_len,TempDecKey);
                                 printTime(start);
 
-                                MPI_Finalize();
+                                MPI_Finalize(MPI_COMM_WORLD);
                                 exit(0);
                                 // MPI_Send(&flag, 1, MPI_INT, 1, 0, MPI_COMM_WORLD);
                                 return 1;
