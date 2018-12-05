@@ -86,7 +86,7 @@ int BruteForce(unsigned char *key, int *lock
                             TempDecKey[10] = alpha[pos5]; 
                             if(strncmp(key,TempDecKey,getLength(TempDecKey)) == 0 ){
                                 flag = 1;
-                                printf("flag : %d\n",flag);
+                                printf("1 flag : %d\n",flag);
                                 MPI_Bcast(&flag, 1, MPI_INT, rank, MPI_COMM_WORLD);
                                 printf("\nKey Cracked: %s : %s\n\n", key, TempDecKey);
                                 decFunction(ciphertext, ciphertext_len,TempDecKey);
@@ -94,7 +94,7 @@ int BruteForce(unsigned char *key, int *lock
                                 return 1;
  
                             } 
-                            printf("%2flag : d\n",flag);[parallel-comp-1:07528] Set MCA parameter "orte_base_help_aggregate" to 0 to see all help / error messages
+                            printf("2 flag : d\n",flag);
                             for(int x = 0; x < size; x++){
                                 printf("X: %d\n",x);
                                 if(x != rank){
