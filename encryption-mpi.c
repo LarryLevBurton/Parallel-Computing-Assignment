@@ -55,7 +55,7 @@ int main(int argc, char *argv[]){
     // strcpy(ciphertext2,ciphertext);
     // strcpy(key2,key);
     // omp_unset_lock(&lock);       
-    flag = BruteForce(key, &lock,ciphertext,ciphertext_len,size,rank);
+    flag = BruteForce(key, &lock,ciphertext,ciphertext_len,rank,size);
     MPI_Finalize();
 
     return 0;
