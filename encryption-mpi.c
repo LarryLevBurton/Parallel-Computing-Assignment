@@ -55,7 +55,7 @@ int main(int argc, char *argv[]){
     // strcpy(ciphertext2,ciphertext);
     // strcpy(key2,key);
     // omp_unset_lock(&lock);       
-    flag = BruteForce(key, &lock,ciphertext,ciphertext_len,rank,size);
+    flag = BruteForce(key, &lock,ciphertext,ciphertext_len,size,rank);
     MPI_Finalize();
 
     return 0;
@@ -95,6 +95,7 @@ int BruteForce(unsigned char *key, int *lock
  
                             } 
                             printf("2 flag : %d\n",flag);
+
                             for(int x = 0; x < size; x++){
                                 printf("X: %d\n",x);
                                 if(x != rank){
