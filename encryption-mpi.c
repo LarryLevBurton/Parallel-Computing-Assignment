@@ -111,7 +111,7 @@ int BruteForce(unsigned char *key, int *lock
                                 printf("\nKey Cracked: %s : %s\n\n", key, TempDecKey);
                                 decFunction(ciphertext, ciphertext_len,TempDecKey);
                                 MPI_Finalize();
-                                exit(1);
+                                exit(0);
                                 // MPI_Send(&flag, 1, MPI_INT, 1, 0, MPI_COMM_WORLD);
                                 return 1;
  
