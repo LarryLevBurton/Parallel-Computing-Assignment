@@ -74,6 +74,7 @@ int BruteForce(unsigned char *key, int *lock
     if(otherRank == size){
         otherRank = 0;
     }
+    printf("Other Rank: %d", otherRank);
     int alphaLength = getLength(alpha);
     for (int pos0 = size; pos0 < alphaLength; pos0 +=rank) {
         TempDecKey[5] = alpha[pos0]; 
