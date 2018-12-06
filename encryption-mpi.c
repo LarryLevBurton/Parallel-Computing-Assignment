@@ -58,7 +58,7 @@ int BruteForce(unsigned char *key, int *lock
 
     int flag = 0;
     int otherflag = 0;
-    printf("Rank: %d Size: %d\n", rank, size);
+    // printf("Rank: %d Size: %d\n", rank, size);
     if(size = 0)rank = 1;
 
     unsigned char TempDecKey[17] = "#####000000#####";
