@@ -12,7 +12,7 @@ int main (void)
    * real application? :-)
    */
   /* A 256 bit key */
-  unsigned char *key = (unsigned char *)"#####999999#####";
+  unsigned char *key = (unsigned char *)"#####765432#####";
 
   // unsigned char *key = (unsigned char *)"0123456789012345";
   // unsigned char decKey[17] = "#####000000#####\0";
