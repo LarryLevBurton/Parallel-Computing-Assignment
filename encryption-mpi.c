@@ -65,7 +65,7 @@ int BruteForce(unsigned char *key, int *lock
     MPI_Barrier(MPI_COMM_WORLD);
 
     int alphaLength = getLength(alpha);
-    for (int pos0 = size; pos0 < alphaLength; pos0 +=rank) {
+    for (int pos0 = size; pos0 < alphaLength; pos0 = pos0 + rank) {
         TempDecKey[5] = alpha[pos0]; 
         for (int pos1 = 0; pos1 < alphaLength; pos1++) {
             TempDecKey[6] = alpha[pos1]; 
