@@ -58,6 +58,8 @@ int BruteForce(unsigned char *key, int *lock
 
     int flag = 0;
     int otherflag = 0;
+    print("Rank: %d Size: %d\n", rank, size);
+    if(size = 0)rank = 1;
 
     unsigned char TempDecKey[17] = "#####000000#####";
     static char alpha[26] = "abcdef0123456789";
@@ -77,7 +79,6 @@ int BruteForce(unsigned char *key, int *lock
                         TempDecKey[9] = alpha[pos4]; 
                         for (int pos5 = 0; pos5 < alphaLength; pos5++) {
                             TempDecKey[10] = alpha[pos5];
-                            printf("%d \n",pos0);
                             if(strncmp(key,TempDecKey,getLength(TempDecKey)) == 0 ){
                                 printf("Rank :%d size: %d \n",size,rank);
                                 printf("\nKey Cracked: %s : %s\n\n", key, TempDecKey);
