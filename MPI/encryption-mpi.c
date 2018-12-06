@@ -9,7 +9,7 @@ int BruteForce(unsigned char *key, int *lock
 int main(int argc, char *argv[]){
 
 
-
+    
     char hostname[1024];
     gethostname(hostname, 1024);
 
@@ -20,6 +20,7 @@ int main(int argc, char *argv[]){
     MPI_Init(&argc,&argv);
     MPI_Comm_size(MPI_COMM_WORLD,&size);
     MPI_Comm_rank(MPI_COMM_WORLD,&rank);
+
     /* A 128 bit key */
     unsigned char *key = (unsigned char *)"#####594232#####";
     unsigned char decKey[17] = "#####000000#####";
@@ -53,6 +54,23 @@ int main(int argc, char *argv[]){
 
 }
  
+
+
+ /*Description:This is function will keep genarting six character keys
+              until it's either found a match to or there is no more 
+              options. 
+
+	Parameters: unsigned char *key - Original key used
+              int *flag - pointer to finish flag
+              omp_lock_t *lock - pointer to OMP lock
+              unsigned char ciphertext[128] - cycphertext
+              int ciphertext_len - length of cyphertext
+
+	Returns: it will return 1 if sucessful and 0 if it fails
+	
+	Author(s): Laurence Lev Burton
+
+*/
 int BruteForce(unsigned char *key, int *lock
                 ,unsigned char ciphertext[128],int ciphertext_len,int rank, int size,double start){
 

@@ -8,6 +8,6 @@ Parallel-Computing-Assignment
 
 
 
-
+z
 mpirun -hostfile hostfile mpi
 run "mpirun --hostfile hostfile mpi"

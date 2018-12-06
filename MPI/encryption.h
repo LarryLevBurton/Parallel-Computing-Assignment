@@ -6,28 +6,54 @@
 #include <time.h>
 #include <omp.h>
 
+
+
+
 int generateWord(unsigned char *key, int *flag, omp_lock_t *lock
                 ,unsigned char ciphertext[128],int ciphertext_len);
 int decFunction( unsigned char ciphertext[128],int ciphertext_len, unsigned char *decKey);
 int decrypt(unsigned char *ciphertext, int ciphertext_len, unsigned char *key,
   unsigned char *iv, unsigned char *plaintext);
 
-// int getLength(char *decKey);
-// int printTime(clock_t time);
+
+/*Description: This function will return the size of an 
+                array of chars(String)
+
+	Parameters: char *decKey - point to first element of array. 
 
 
+	Returns: it will return the size of you array
+	
+	Author(s): Laurence Lev Burton
+*/
 int getLength(char *decKey){
+  
   int count;
   for(count = 0; decKey[count] != '\0'; count++){}
   return count;
 
-}
-int printTime(double start){
-  double end = omp_get_wtime();
-  double time_spent = (double)(end - start);
-  printf("%f \n", time_spent);  return 0;
 
 }
+
+
+/*Description: Uses OMP to print the time
+                 something took to run
+	Parameters: double start 
+
+
+	Returns: void
+	
+	Author(s): Laurence Lev Burton
+*/
+void printTime(double start){
+
+  double end = omp_get_wtime();
+  double time_spent = (double)(end - start);
+  printf("Time take: %f \n", time_spent);  return 0;
+
+}
+
+
 
 
 
@@ -57,6 +83,10 @@ void handleErrors(void)
   printf("\n\n");
 //   abort();
 }
+
+
+
+
 
 
 int encrypt(unsigned char *plaintext, int plaintext_len, unsigned char *key,
