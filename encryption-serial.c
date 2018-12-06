@@ -12,7 +12,7 @@ int main (void)
    * real application? :-)
    */
   /* A 256 bit key */
-  unsigned char *key = (unsigned char *)"#####969249#####";
+  unsigned char *key = (unsigned char *)"#####123456#####";
 
   // unsigned char *key = (unsigned char *)"0123456789012345";
   // unsigned char decKey[17] = "#####000000#####\0";
@@ -64,7 +64,7 @@ int main (void)
                     printf("\nKey Cracked: %s : %s\n\n", key, decKey);
                     decFunction(ciphertext, ciphertext_len,decKey);
                     printTime(start);
-                    exit(0);
+                    return 0;
                   }
               }
           }

@@ -11,7 +11,7 @@ int main (void)
    * real application? :-)
    */
   /* A 128 bit key */
-  unsigned char *key = (unsigned char *)"#####700000#####";
+  unsigned char *key = (unsigned char *)"#####123456#####";
   // unsigned char *key = (unsigned char *)"#####969249#####";
   // unsigned char *key = (unsigned char *)"0123456789012345";
   unsigned char decKey[17] = "#####000000#####";
