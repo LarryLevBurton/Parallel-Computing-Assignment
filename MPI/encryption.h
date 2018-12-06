@@ -49,7 +49,8 @@ void printTime(double start){
 
   double end = omp_get_wtime();
   double time_spent = (double)(end - start);
-  printf("Time take: %f \n", time_spent);  return 0;
+  printf("Time take: %f \n", time_spent);  
+  return;
 
 }
 
