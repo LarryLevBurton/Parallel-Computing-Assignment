@@ -21,7 +21,7 @@ int main(int argc, char *argv[]){
     MPI_Comm_size(MPI_COMM_WORLD,&size);
     MPI_Comm_rank(MPI_COMM_WORLD,&rank);
     /* A 128 bit key */
-    unsigned char *key = (unsigned char *)"#####765432#####";
+    unsigned char *key = (unsigned char *)"#####594232#####";
     unsigned char decKey[17] = "#####000000#####";
     /* A 128 bit IV */
     unsigned char *iv = (unsigned char *)"012345678912343";
